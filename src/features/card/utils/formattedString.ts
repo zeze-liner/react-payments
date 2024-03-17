@@ -1,14 +1,10 @@
 import { DISPLAY_SECURITY_CHARACTER } from '@/features/card/constants/display';
+import { CardNumber } from '@/features/card/types/cardInputTypes';
 
 const formattedPaddedValue = (value: string, length: number) => value.padEnd(length, ' ');
 const formattedPasswordStyle = (value: string) => value.replace(/./g, DISPLAY_SECURITY_CHARACTER);
 
-export const formattedDisplayCardNumber = (cardNumber: {
-  first: string;
-  second: string;
-  third: string;
-  fourth: string;
-}) => {
+export const formattedDisplayCardNumber = (cardNumber: CardNumber) => {
   if (!cardNumber.fourth && !cardNumber.third && !cardNumber.second) {
     return cardNumber.first;
   }
