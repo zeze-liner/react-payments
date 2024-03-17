@@ -18,6 +18,20 @@ interface Props {
 const INPUT_ID = 'card-number';
 
 export const CardInputNumber = ({ cardNumber, onChange }: Props) => {
+  const hasFirstCoupler =
+    cardNumber.first.length >= MAX_LENGTH_PIECE_CARD_NUMBER ||
+    cardNumber.second ||
+    cardNumber.third ||
+    cardNumber.fourth;
+
+  const hasSecondCoupler =
+    cardNumber.second.length >= MAX_LENGTH_PIECE_CARD_NUMBER ||
+    cardNumber.third ||
+    cardNumber.fourth;
+
+  const hasThirdCoupler =
+    cardNumber.third.length >= MAX_LENGTH_PIECE_CARD_NUMBER || cardNumber.fourth;
+
   return (
     <VFlex>
       <Label htmlFor={INPUT_ID}>{'카드 번호'}</Label>
@@ -28,19 +42,11 @@ export const CardInputNumber = ({ cardNumber, onChange }: Props) => {
           type={'text'}
           onChange={(e) => onChange(e, 'first')}
         />
-        {(cardNumber.first.length >= MAX_LENGTH_PIECE_CARD_NUMBER ||
-          cardNumber.second ||
-          cardNumber.third ||
-          cardNumber.fourth) &&
-          DISPLAY_CARD_NUMBER_COUPLER}
+        {hasFirstCoupler && DISPLAY_CARD_NUMBER_COUPLER}
         <Input value={cardNumber.second} type={'text'} onChange={(e) => onChange(e, 'second')} />
-        {(cardNumber.second.length >= MAX_LENGTH_PIECE_CARD_NUMBER ||
-          cardNumber.third ||
-          cardNumber.fourth) &&
-          DISPLAY_CARD_NUMBER_COUPLER}
+        {hasSecondCoupler && DISPLAY_CARD_NUMBER_COUPLER}
         <Input value={cardNumber.third} type={'password'} onChange={(e) => onChange(e, 'third')} />
-        {cardNumber.third.length >= MAX_LENGTH_PIECE_CARD_NUMBER ||
-          (cardNumber.fourth && DISPLAY_CARD_NUMBER_COUPLER)}
+        {hasThirdCoupler && DISPLAY_CARD_NUMBER_COUPLER}
         <Input
           value={cardNumber.fourth}
           type={'password'}
