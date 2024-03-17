@@ -1,37 +1,26 @@
-import { CARD_REGISTRATION_STEPS } from '@/features/card/constants/step';
+import { CARD_REGISTRATION_STEPS, TSteps } from '@/features/card/constants/step';
 import { useStepper } from '@/hooks/useStepper';
 import { CardInventoryPage } from '@/features/card/pages/card-inventory';
 import { AddCardPage } from '@/features/card/pages/add-card';
 import { CompleteAddPage } from '@/features/card/pages/complete-add';
 
 export const CardManagementPage = () => {
-  const { Stepper, Step, setStep } = useStepper(CARD_REGISTRATION_STEPS);
+  const { Stepper, Step, setStep } = useStepper<TSteps>(CARD_REGISTRATION_STEPS);
+
+  const onChangeStep = (step: 0 | 1 | 2) => {
+    setStep(CARD_REGISTRATION_STEPS[step]);
+  };
 
   return (
     <Stepper>
       <Step name={CARD_REGISTRATION_STEPS[0]}>
-        <CardInventoryPage
-          onNext={() => {
-            setStep(CARD_REGISTRATION_STEPS[1]);
-          }}
-        />
+        <CardInventoryPage onNext={() => onChangeStep(1)} />
       </Step>
       <Step name={CARD_REGISTRATION_STEPS[1]}>
-        <AddCardPage
-          onPrev={() => {
-            setStep(CARD_REGISTRATION_STEPS[0]);
-          }}
-          onNext={() => {
-            setStep(CARD_REGISTRATION_STEPS[2]);
-          }}
-        />
+        <AddCardPage onPrev={() => onChangeStep(0)} onNext={() => onChangeStep(2)} />
       </Step>
       <Step name={CARD_REGISTRATION_STEPS[2]}>
-        <CompleteAddPage
-          onNext={() => {
-            setStep(CARD_REGISTRATION_STEPS[0]);
-          }}
-        />
+        <CompleteAddPage onNext={() => onChangeStep(0)} />
       </Step>
     </Stepper>
   );
