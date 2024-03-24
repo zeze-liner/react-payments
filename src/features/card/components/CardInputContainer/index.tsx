@@ -1,8 +1,9 @@
 import { CardInput } from '@/features/card/components/CardInput';
-import { useCardInput } from '@/features/card/hooks/useCardInput';
 import { VFlex } from '@/components/atoms/VFlex';
 import { Button } from '@/components/atoms/Button';
 import { Text } from '@/components/atoms/Text';
+import { useChangeCardInput } from '@/features/card/hooks/useChangeCardInput';
+import { useValidCardForm } from '@/features/card/hooks/useValidCardForm';
 
 interface Props {
   onNext: () => void;
@@ -15,11 +16,11 @@ export const CardInputContainer = ({ onNext }: Props) => {
     onChangeOwner,
     onChangeSecurityCode,
     onChangePassword,
-    isValidCardForm,
-  } = useCardInput();
+  } = useChangeCardInput();
+  const { isValid } = useValidCardForm();
 
   const submitCardForm = () => {
-    if (!isValidCardForm) {
+    if (!isValid) {
       alert('카드 정보를 정확히 입력해주세요.');
       return;
     }

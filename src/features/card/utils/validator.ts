@@ -20,11 +20,11 @@ export const checkIsValidPatternAndLength = ({
   return checkIsValidPattern(value, regExp) && checkIsValidLength(value, length);
 };
 
-const checkIsValidCompanyName = (companyName: CardInputInterface['companyName']) => {
+export const checkIsValidCompanyName = (companyName: CardInputInterface['companyName']) => {
   return companyName.trim().length > 0;
 };
 
-const checkIsValidCardNumber = (cardNumber: CardInputInterface['cardNumber']) => {
+export const checkIsValidCardNumber = (cardNumber: CardInputInterface['cardNumber']) => {
   return (
     cardNumber.first.length === 4 &&
     cardNumber.second.length === 4 &&
@@ -33,24 +33,19 @@ const checkIsValidCardNumber = (cardNumber: CardInputInterface['cardNumber']) =>
   );
 };
 
-const checkIsValidExpirationDate = (expirationDate: CardInputInterface['expirationDate']) => {
-  return expirationDate.MM.length === 2 && expirationDate.YY.length === 2;
+export const checkIsValidExpirationDate = (
+  expirationDate: CardInputInterface['expirationDate'],
+) => {
+  return (
+    (expirationDate.MM.length === 1 || expirationDate.MM.length === 2) &&
+    expirationDate.YY.length === 2
+  );
 };
 
-const checkIsValidSecurityCode = (securityCode: CardInputInterface['securityCode']) => {
+export const checkIsValidSecurityCode = (securityCode: CardInputInterface['securityCode']) => {
   return securityCode.length === 3;
 };
 
-const checkIsValidPassword = (password: CardInputInterface['password']) => {
-  return password.first.length === 2 && password.second.length === 2;
-};
-
-export const checkIsValidCardForm = (cardInput: CardInputInterface) => {
-  return (
-    checkIsValidCompanyName(cardInput.companyName) &&
-    checkIsValidCardNumber(cardInput.cardNumber) &&
-    checkIsValidExpirationDate(cardInput.expirationDate) &&
-    checkIsValidSecurityCode(cardInput.securityCode) &&
-    checkIsValidPassword(cardInput.password)
-  );
+export const checkIsValidPassword = (password: CardInputInterface['password']) => {
+  return password.first.length === 1 && password.second.length === 1;
 };
