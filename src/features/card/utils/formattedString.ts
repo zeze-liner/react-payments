@@ -28,9 +28,10 @@ export const formattedDisplayCardNumber = (cardNumber: CardNumber) => {
 };
 
 export const formattedExpirationDateMM = (MM: string) => {
-  if (+MM === 0) {
+  const parsedMM = +MM;
+  if (parsedMM === 0) {
     return '';
   }
 
-  return +MM >= 2 && +MM <= 9 ? `0${MM}` : MM;
+  return parsedMM >= 2 && parsedMM <= 9 ? `0${MM}` : MM;
 };
