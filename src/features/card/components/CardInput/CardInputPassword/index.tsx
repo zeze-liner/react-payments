@@ -6,7 +6,6 @@ import { HFlex } from '@/components/atoms/HFlex';
 import { Input } from '@/components/atoms/Input';
 import { Label } from '@/components/atoms/Label';
 import { VFlex } from '@/components/atoms/VFlex';
-import { Box } from '@/components/atoms/Box';
 
 interface Props {
   password: CardInputInterface['password'];
@@ -38,8 +37,8 @@ export const CardInputPassword = ({ password, onChange }: Props) => {
           className={'w-15'}
           onChange={(e) => onChange(e, 'second')}
         />
-        <Box className={'input-basic w-15 flex-center bg-white'}>{DISPLAY_SECURITY_CHARACTER}</Box>
-        <Box className={'input-basic w-15 flex-center bg-white'}>{DISPLAY_SECURITY_CHARACTER}</Box>
+        <div className={'input-basic w-15 flex-center bg-white'}>{DISPLAY_SECURITY_CHARACTER}</div>
+        <div className={'input-basic w-15 flex-center bg-white'}>{DISPLAY_SECURITY_CHARACTER}</div>
       </HFlex>
     </VFlex>
   );
