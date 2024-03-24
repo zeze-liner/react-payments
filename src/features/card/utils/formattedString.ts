@@ -5,18 +5,21 @@ const formattedPaddedValue = (value: string, length: number) => value.padEnd(len
 const formattedPasswordStyle = (value: string) => value.replace(/./g, DISPLAY_SECURITY_CHARACTER);
 
 export const formattedDisplayCardNumber = (cardNumber: CardNumber) => {
-  if (!cardNumber.fourth && !cardNumber.third && !cardNumber.second) {
+  const hasOnlyFirstCardNumber = !cardNumber.fourth && !cardNumber.third && !cardNumber.second;
+  if (hasOnlyFirstCardNumber) {
     return cardNumber.first;
   }
 
   const formattedFirst = formattedPaddedValue(cardNumber.first, 4);
   const formattedSecond = formattedPaddedValue(cardNumber.second, 4);
-  if (!cardNumber.fourth && !cardNumber.third) {
+  const hasOnlyFirstAndSecondCardNumber = !cardNumber.fourth && !cardNumber.third;
+  if (hasOnlyFirstAndSecondCardNumber) {
     return `${formattedFirst} ${formattedSecond}`;
   }
 
   const formattedThird = formattedPaddedValue(formattedPasswordStyle(cardNumber.third), 4);
-  if (!cardNumber.fourth) {
+  const hasOnlyFirstAndSecondAndThirdCardNumber = !cardNumber.fourth;
+  if (hasOnlyFirstAndSecondAndThirdCardNumber) {
     return `${formattedFirst} ${formattedSecond} ${formattedThird}`;
   }
 
