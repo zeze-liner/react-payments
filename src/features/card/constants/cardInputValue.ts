@@ -1,7 +1,7 @@
 import { CardInputInterface } from '@/features/card/types/cardInputTypes';
 
 export const CARD_INPUT: CardInputInterface = {
-  companyName: '',
+  companyName: '우리카드',
   cardNumber: {
     first: '',
     second: '',
