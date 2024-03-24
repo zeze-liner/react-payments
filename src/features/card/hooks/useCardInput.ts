@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { CARD_INPUT } from '@/features/card/constants/cardInputValue';
 
 import { CardInputInterface } from '@/features/card/types/cardInputTypes';
@@ -7,6 +7,7 @@ import { useChangeExpirationDate } from './useChangeExpirationDate';
 import { useChangeOwner } from './useChangeOwner';
 import { useChangeSecurityCode } from './useChangeSecurityCode';
 import { useChangePassword } from './useChangePassword';
+import { checkIsValidCardForm } from '../utils/validator';
 
 export const useCardInput = () => {
   const [input, setInput] = useState(CARD_INPUT);
@@ -26,6 +27,7 @@ export const useCardInput = () => {
   const { onChangeOwner } = useChangeOwner({ onChange });
   const { onChangeSecurityCode } = useChangeSecurityCode({ onChange });
   const { onChangePassword } = useChangePassword({ input, onChange });
+  const isValidCardForm = useMemo(() => checkIsValidCardForm(input), [input]);
 
   return {
     input,
@@ -35,5 +37,6 @@ export const useCardInput = () => {
     onChangeOwner,
     onChangeSecurityCode,
     onChangePassword,
+    isValidCardForm,
   };
 };

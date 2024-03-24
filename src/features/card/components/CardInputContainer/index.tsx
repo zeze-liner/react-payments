@@ -15,7 +15,16 @@ export const CardInputContainer = ({ onNext }: Props) => {
     onChangeOwner,
     onChangeSecurityCode,
     onChangePassword,
+    isValidCardForm,
   } = useCardInput();
+
+  const submitCardForm = () => {
+    if (!isValidCardForm) {
+      alert('카드 정보를 정확히 입력해주세요.');
+      return;
+    }
+    onNext();
+  };
 
   return (
     <VFlex className={'gap-4'}>
@@ -33,7 +42,7 @@ export const CardInputContainer = ({ onNext }: Props) => {
       <CardInput.Owner ownerName={input.ownerName} onChange={onChangeOwner} />
       <CardInput.SecurityCode securityCode={input.securityCode} onChange={onChangeSecurityCode} />
       <CardInput.Password password={input.password} onChange={onChangePassword} />
-      <Button type={'button'} onClick={onNext} className={'ml-auto'}>
+      <Button type={'button'} onClick={submitCardForm} className={'ml-auto'}>
         <Text>{'다음'}</Text>
       </Button>
     </VFlex>
