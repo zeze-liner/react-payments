@@ -1,5 +1,5 @@
 import { ChangeEvent } from 'react';
-import { CardInputInterface } from '@/features/card/types/cardInputTypes';
+import { CardInputInterface } from '@/features/card/types/cardTypes';
 import { Input } from '@/components/atoms/Input';
 import { Label } from '@/components/atoms/Label';
 import { VFlex } from '@/components/atoms/VFlex';

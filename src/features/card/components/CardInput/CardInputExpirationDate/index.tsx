@@ -1,5 +1,5 @@
 import { ChangeEvent } from 'react';
-import { CardInputInterface } from '@/features/card/types/cardInputTypes';
+import { CardInputInterface } from '@/features/card/types/cardTypes';
 import { DISPLAY_EXPIRATION_DATE_COUPLER } from '@/features/card/constants/display';
 import { MAX_LENGTH_PIECE_EXPIRATION_DATE } from '@/features/card/constants/maxLength';
 import { HFlex } from '@/components/atoms/HFlex';

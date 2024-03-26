@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { CARD_BOX_TYPE, CARD_CHIP_SIZE } from '@/features/card/constants/cardShape';
-import { CardInputInterface } from '@/features/card/types/cardInputTypes';
+import { CardInputInterface } from '@/features/card/types/cardTypes';
 import { CardNumber } from '@/features/card/components/CardNumber';
 import { CardInfo } from '@/features/card/components/CardInfo';
 import { CardChip } from '@/features/card/components/CardChip';

@@ -2,7 +2,7 @@ import {
   DISPLAY_MAX_LENGTH_CARD_OWNER_NAME,
   DISPLAY_SECURITY_CHARACTER,
 } from '@/features/card/constants/display';
-import { CardInputInterface } from '@/features/card/types/cardInputTypes';
+import { CardInputInterface } from '@/features/card/types/cardTypes';
 
 const formattedPaddedValue = (value: string, length: number) => value.padEnd(length, ' ');
 const formattedPasswordStyle = (value: string) => value.replace(/./g, DISPLAY_SECURITY_CHARACTER);

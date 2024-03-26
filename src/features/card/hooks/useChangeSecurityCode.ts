@@ -1,5 +1,5 @@
 import { ChangeEvent, useCallback } from 'react';
-import { CardInputInterface } from '@/features/card/types/cardInputTypes';
+import { CardInputInterface } from '@/features/card/types/cardTypes';
 import { MAX_LENGTH_SECURITY_CODE } from '@/features/card/constants/maxLength';
 import { NUMBER_PARSABLE_STRING_PATTERN } from '@/features/card/constants/regExp';
 import { checkIsValidPatternAndLength } from '@/features/card/utils/validator';

@@ -1,5 +1,5 @@
 import { ChangeEvent } from 'react';
-import { CardInputInterface } from '@/features/card/types/cardInputTypes';
+import { CardInputInterface } from '@/features/card/types/cardTypes';
 import { MAX_LENGTH_PIECE_PASSWORD } from '@/features/card/constants/maxLength';
 import { DISPLAY_SECURITY_CHARACTER } from '@/features/card/constants/display';
 import { HFlex } from '@/components/atoms/HFlex';

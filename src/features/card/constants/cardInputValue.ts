@@ -1,4 +1,4 @@
-import { CardInputInterface } from '@/features/card/types/cardInputTypes';
+import { CardInputInterface } from '@/features/card/types/cardTypes';
 
 export const CARD_INPUT: CardInputInterface = {
   companyName: '우리카드',

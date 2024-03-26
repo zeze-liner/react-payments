@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useCallback, useContext, useMemo, useState } from 'react';
 import { CARD_INPUT } from '@/features/card/constants/cardInputValue';
-import { CardInputInterface } from '@/features/card/types/cardInputTypes';
+import { CardInputInterface } from '@/features/card/types/cardTypes';
 
 interface CardContextInterface {
   input: CardInputInterface;
@@ -8,6 +8,7 @@ interface CardContextInterface {
     prop: keyof CardInputInterface,
     nextVal: CardInputInterface[T],
   ) => void;
+  cards: string;
 }
 
 const CardContext = createContext<CardContextInterface | null>(null);

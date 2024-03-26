@@ -1,5 +1,5 @@
 import { ChangeEvent } from 'react';
-import { CardInputInterface } from '@/features/card/types/cardInputTypes';
+import { CardInputInterface } from '@/features/card/types/cardTypes';
 import { MAX_LENGTH_PIECE_CARD_NUMBER } from '@/features/card/constants/maxLength';
 import { DISPLAY_CARD_NUMBER_COUPLER } from '@/features/card/constants/display';
 import { HFlex } from '@/components/atoms/HFlex';
