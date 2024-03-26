@@ -1,5 +1,8 @@
-import { DISPLAY_SECURITY_CHARACTER } from '@/features/card/constants/display';
-import { CardNumber } from '@/features/card/types/cardInputTypes';
+import {
+  DISPLAY_MAX_LENGTH_CARD_OWNER_NAME,
+  DISPLAY_SECURITY_CHARACTER,
+} from '@/features/card/constants/display';
+import { CardInputInterface, CardNumber } from '@/features/card/types/cardInputTypes';
 
 const formattedPaddedValue = (value: string, length: number) => value.padEnd(length, ' ');
 const formattedPasswordStyle = (value: string) => value.replace(/./g, DISPLAY_SECURITY_CHARACTER);
@@ -34,4 +37,12 @@ export const formattedExpirationDateMM = (MM: string) => {
   }
 
   return parsedMM >= 2 && parsedMM <= 9 ? `0${MM}` : MM;
+};
+
+export const formattedOwnerName = (ownerName: CardInputInterface['ownerName']) => {
+  return ownerName.slice(0, DISPLAY_MAX_LENGTH_CARD_OWNER_NAME) || 'NAME';
+};
+
+export const formattedExpirationDate = (expirationDate: CardInputInterface['expirationDate']) => {
+  return `${expirationDate.MM || 'MM'} / ${expirationDate.YY || 'YY'}`;
 };
