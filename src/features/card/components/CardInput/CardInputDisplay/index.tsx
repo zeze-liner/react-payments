@@ -1,8 +1,12 @@
-import { DISPLAY_MAX_LENGTH_CARD_OWNER_NAME } from '@/features/card/constants/display';
-import { CardInputInterface } from '@/features/card/types/cardInputTypes';
-import { formattedDisplayCardNumber } from '@/features/card/utils/formattedString';
-import { Text } from '@/components/atoms/Text';
 import { useMemo } from 'react';
+import { DISPLAY_MAX_LENGTH_CARD_OWNER_NAME } from '@/features/card/constants/display';
+import { CARD_BOX_TYPE, CARD_CHIP_SIZE } from '@/features/card/constants/cardShape';
+import { CardInputInterface } from '@/features/card/types/cardInputTypes';
+import { CardNumber } from '@/features/card/components/CardNumber';
+import { CardInfo } from '@/features/card/components/CardInfo';
+import { CardChip } from '@/features/card/components/CardChip';
+import { CardBox } from '@/features/card/components/CardBox';
+import { formattedDisplayCardNumber } from '@/features/card/utils/formattedString';
 
 interface Props {
   companyName: CardInputInterface['companyName'];
@@ -15,26 +19,18 @@ export const CardInputDisplay = ({ companyName, ownerName, cardNumber, expiratio
   const displayCardNumber = useMemo(() => formattedDisplayCardNumber(cardNumber), [cardNumber]);
 
   return (
-    <div className={'card-box'}>
-      <div className={'empty-card'}>
-        <div className={'card-top'}>{companyName}</div>
-        <div className={'card-middle'}>
-          <div className="small-card__chip" />
-        </div>
-        <div className={'card-bottom'}>
-          <div className={'card-bottom__number'}>
-            <Text className={'card-text'}>{displayCardNumber}</Text>
-          </div>
-          <div className={'card-bottom__info'}>
-            <Text className={'card-text'}>
-              {ownerName.slice(0, DISPLAY_MAX_LENGTH_CARD_OWNER_NAME) || 'NAME'}
-            </Text>
-            <Text className={'card-text'}>
-              {expirationDate.MM || 'MM'} / {expirationDate.YY || 'YY'}
-            </Text>
-          </div>
-        </div>
-      </div>
-    </div>
+    <CardBox type={CARD_BOX_TYPE.empty}>
+      <CardBox.Top>{companyName}</CardBox.Top>
+      <CardBox.Middle>
+        <CardChip size={CARD_CHIP_SIZE.small} />
+      </CardBox.Middle>
+      <CardBox.Bottom>
+        <CardNumber cardNumber={displayCardNumber} />
+        <CardInfo
+          ownerName={ownerName.slice(0, DISPLAY_MAX_LENGTH_CARD_OWNER_NAME) || 'NAME'}
+          expirationDateMMYY={`${expirationDate.MM || 'MM'} / ${expirationDate.YY || 'YY'}`}
+        />
+      </CardBox.Bottom>
+    </CardBox>
   );
 };
