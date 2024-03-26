@@ -3,7 +3,7 @@ import { VFlex } from '@/components/atoms/VFlex';
 import { Button } from '@/components/atoms/Button';
 import { Text } from '@/components/atoms/Text';
 import { useChangeCardInput } from '@/features/card/hooks/useChangeCardInput';
-import { useValidCardForm } from '@/features/card/hooks/useValidCardForm';
+import { useIsValidCardForm } from '@/features/card/hooks/useIsValidCardForm';
 
 interface Props {
   onNext: () => void;
@@ -17,7 +17,7 @@ export const CardInputContainer = ({ onNext }: Props) => {
     onChangeSecurityCode,
     onChangePassword,
   } = useChangeCardInput();
-  const { isValid } = useValidCardForm();
+  const { isValid } = useIsValidCardForm();
 
   const submitCardForm = () => {
     if (!isValid) {

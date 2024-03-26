@@ -19,7 +19,7 @@ const checkIsValidCardForm = (cardInput: CardInputInterface) => {
   );
 };
 
-export const useValidCardForm = () => {
+export const useIsValidCardForm = () => {
   const { input } = useCard();
   const isValid = useMemo(() => checkIsValidCardForm(input), [input]);
 
