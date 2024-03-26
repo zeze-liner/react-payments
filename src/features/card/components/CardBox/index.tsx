@@ -13,11 +13,11 @@ interface Props {
 export const CardBox = ({ type, children }: Props) => {
   const renderCard = (type: CardBoxType) => {
     if (type === CARD_BOX_TYPE.big) {
-      return <div className="big-card">{children}</div>;
+      return <div className="card-inner big-card">{children}</div>;
     }
 
     // type === CARD_BOX_TYPE.empty;
-    return <div className="empty-card">{children}</div>;
+    return <div className="card-inner empty-card">{children}</div>;
   };
 
   return <div className="card-box">{renderCard(type)}</div>;
