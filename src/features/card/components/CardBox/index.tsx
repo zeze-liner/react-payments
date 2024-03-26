@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { CardTop } from './CardTop';
 import { CardBottom } from './CardBottom';
 import { CardMiddle } from './CardMiddle';
-import { CardBoxType } from '@/features/card/types/cardShapeTypes';
+import { CardBoxType } from '@/features/card/types/cardUITypes';
 import { CARD_BOX_TYPE } from '@/features/card/constants/cardShape';
 
 interface Props {
