@@ -1,3 +1,4 @@
+import { AppLayout } from '@/components/layout/AppLayout';
 import { RootLayout } from '@/components/layout/RootLayout';
 
 interface Props {
@@ -7,7 +8,7 @@ interface Props {
 export const CompleteAddPage = ({ onNext }: Props) => {
   return (
     <RootLayout>
-      <div className="app flex-column-center">
+      <AppLayout className={'flex-column-center'}>
         <div className="flex-center">
           <h2 className="page-title mb-10">카드등록이 완료되었습니다.</h2>
         </div>
@@ -40,7 +41,7 @@ export const CompleteAddPage = ({ onNext }: Props) => {
         <button className="button-box mt-50" type={'button'} onClick={onNext}>
           <span className="button-text">확인</span>
         </button>
-      </div>
+      </AppLayout>
     </RootLayout>
   );
 };
