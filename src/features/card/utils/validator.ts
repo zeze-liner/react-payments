@@ -1,4 +1,4 @@
-import { CardInputInterface } from '../types/cardInputTypes';
+import { CardInputInterface } from '@/features/card/types/cardInputTypes';
 
 const checkIsValidPattern = (value: string, pattern: RegExp) => {
   return pattern.test(value);
