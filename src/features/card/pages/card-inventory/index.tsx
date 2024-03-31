@@ -1,42 +1,40 @@
 import { RootLayout } from '@/components/layout/RootLayout';
+import { Button } from '@/components/atoms/Button';
+import { useCard } from '@/features/card/providers/CardProvider';
+import { AppLayout } from '@/components/layout/AppLayout';
+import { Heading } from '@/components/atoms/Heading';
+import { Header } from '@/components/molecules/Header';
+import { VFlex } from '@/components/atoms/VFlex';
+import { CardInventoryItem } from '@/features/card/components/CardInventoryItem';
 
 interface Props {
   onNext: () => void;
 }
 
 export const CardInventoryPage = ({ onNext }: Props) => {
+  const { cards } = useCard();
+
   return (
     <RootLayout>
-      <div className="app flex-column-center">
-        <div className="flex-center">
-          <h2 className="page-title mb-10">보유 카드</h2>
-        </div>
-        <div className="card-box">
-          <div className="small-card">
-            <div className="card-top">
-              <span className="card-text">클린카드</span>
-            </div>
-            <div className="card-middle">
-              <div className="small-card__chip"></div>
-            </div>
-            <div className="card-bottom">
-              <div className="card-bottom__number">
-                <span className="card-text">1111 - 2222 - oooo - oooo</span>
-              </div>
-              <div className="card-bottom__info">
-                <span className="card-text">YUJO</span>
-                <span className="card-text">12 / 23</span>
-              </div>
-            </div>
+      <AppLayout>
+        <Header
+          heading={
+            <Heading as={'h2'} className={'page-title mb-10'}>
+              {'보유 카드'}
+            </Heading>
+          }
+        />
+        <VFlex className="gap-6">
+          {cards.map((card) => (
+            <CardInventoryItem key={Object.values(card).join()} card={card} />
+          ))}
+          <div className="card-box">
+            <Button className="card-inner empty-card" type={'button'} onClick={onNext}>
+              +
+            </Button>
           </div>
-        </div>
-        <span className="card-nickname">법인카드</span>
-        <div className="card-box">
-          <button className="empty-card" type={'button'} onClick={onNext}>
-            +
-          </button>
-        </div>
-      </div>
+        </VFlex>
+      </AppLayout>
     </RootLayout>
   );
 };

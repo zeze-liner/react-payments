@@ -1,5 +1,6 @@
 export const CARD_BOX_TYPE = {
   big: 'big',
+  small: 'small',
   empty: 'empty',
 } as const;
 

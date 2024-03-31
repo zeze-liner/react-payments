@@ -41,7 +41,7 @@ const CardProvider = ({ children }: Props) => {
   );
 
   const addCard = useCallback((card: CardInputInterface) => {
-    setCards((prev) => [...prev, card]);
+    setCards((prev) => [card, ...prev]);
   }, []);
 
   const editCard = useCallback(
@@ -53,7 +53,7 @@ const CardProvider = ({ children }: Props) => {
       card: CardInputInterface;
     }) => {
       setCards((prev) =>
-        prev.map((c) => (compareCardNumber(c.cardNumber, cardNumber) ? { ...c, card } : c)),
+        prev.map((c) => (compareCardNumber(c.cardNumber, cardNumber) ? { ...c, ...card } : c)),
       );
     },
     [],

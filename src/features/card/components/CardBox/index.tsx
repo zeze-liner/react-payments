@@ -16,6 +16,10 @@ export const CardBox = ({ type, children }: Props) => {
       return <div className="card-inner big-card">{children}</div>;
     }
 
+    if (type === CARD_BOX_TYPE.small) {
+      return <div className="card-inner small-card">{children}</div>;
+    }
+
     // type === CARD_BOX_TYPE.empty;
     return <div className="card-inner empty-card">{children}</div>;
   };
