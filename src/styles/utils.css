@@ -126,3 +126,11 @@
 .cursor-pointer {
   cursor: pointer;
 }
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}

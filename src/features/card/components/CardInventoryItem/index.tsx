@@ -1,3 +1,4 @@
+import { MouseEventHandler, useState } from 'react';
 import { VFlex } from '@/components/atoms/VFlex';
 import { Text } from '@/components/atoms/Text';
 import { CardInputInterface } from '@/features/card/types/cardTypes';
@@ -8,6 +9,7 @@ import { CardNumber } from '@/features/card/components/CardNumber';
 import { CardInfo } from '@/features/card/components/CardInfo';
 import { useCard } from '@/features/card/providers/CardProvider';
 import { useCardDisplayValue } from '../../hooks/useCardDisplayValue';
+import { Button } from '@/components/atoms/Button';
 
 interface Props {
   card: CardInputInterface;
@@ -15,19 +17,32 @@ interface Props {
 }
 
 export const CardInventoryItem = ({ card, moveToEditPage }: Props) => {
-  const { setCurrentInput } = useCard();
-
+  const [isDeleteVisible, setIsDeleteVisible] = useState(false);
+  const { setCurrentInput, deleteCard } = useCard();
   const { displayCardNumber, displayOwnerName, displayExpirationDate } = useCardDisplayValue({
     card,
   });
 
-  const onClick = () => {
+  const onClickItem = () => {
     setCurrentInput(card);
     moveToEditPage();
   };
 
+  const onClickDelete: MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.stopPropagation();
+
+    if (confirm('등록한 카드가 삭제됩니다. 정말 삭제하시겠습니까?')) {
+      deleteCard(card.cardNumber);
+    }
+  };
+
   return (
-    <VFlex className="gap-2 flex-column-center cursor-pointer" onClick={onClick}>
+    <VFlex
+      className="gap-2 flex-column-center cursor-pointer relative"
+      onClick={onClickItem}
+      onMouseEnter={() => setIsDeleteVisible(true)}
+      onMouseLeave={() => setIsDeleteVisible(false)}
+    >
       <CardBox type={CARD_BOX_TYPE.small}>
         <CardBox.Top>{card.companyName}</CardBox.Top>
         <CardBox.Middle>
@@ -39,6 +54,11 @@ export const CardInventoryItem = ({ card, moveToEditPage }: Props) => {
         </CardBox.Bottom>
       </CardBox>
       <Text className="card-nickname">{card.nickname}</Text>
+      {isDeleteVisible && (
+        <Button type="button" className="absolute delete-btn" onClick={onClickDelete}>
+          x
+        </Button>
+      )}
     </VFlex>
   );
 };
