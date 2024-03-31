@@ -33,7 +33,7 @@ export const useChangeExpirationDate = ({ input, onChange }: Props) => {
         }) ||
         checkIsDeleteInputType(nativeEvent as InputEvent)
       ) {
-        onChange('expirationDate', {
+        onChange<'expirationDate'>('expirationDate', {
           ...input.expirationDate,
           [section]: section === 'MM' ? formattedExpirationDateMM(value) : value,
         });

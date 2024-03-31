@@ -15,8 +15,6 @@ export const useChangeCardInput = () => {
   const { onChangePassword } = useChangePassword({ input, onChange });
 
   return {
-    input,
-    onChange,
     onChangeNumber,
     onChangeExpirationDate,
     onChangeOwner,

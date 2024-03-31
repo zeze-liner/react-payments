@@ -18,4 +18,5 @@ export const CARD_INPUT: CardInputInterface = {
     first: '',
     second: '',
   },
+  nickname: '',
 };

@@ -14,18 +14,35 @@ import {
   formattedExpirationDate,
   formattedOwnerName,
 } from '@/features/card/utils/formattedString';
+import { Input } from '@/components/atoms/Input';
+import { useChangeCardNickname } from '../../hooks/useChangeCardNickname';
 
 interface Props {
   onNext: () => void;
 }
 
 export const CompleteAddPage = ({ onNext }: Props) => {
-  const { input } = useCard();
+  const { input, editCard, resetInput } = useCard();
   const { cardNumber, ownerName, expirationDate } = input;
 
   const displayCardNumber = useMemo(() => formattedDisplayCardNumber(cardNumber), [cardNumber]);
   const displayOwnerName = formattedOwnerName(ownerName);
   const displayExpirationDate = formattedExpirationDate(expirationDate);
+
+  const { onChangeNickname } = useChangeCardNickname();
+
+  const submitCardNickname = () => {
+    const isValid = input.nickname.length <= 10;
+    if (!isValid) {
+      alert('최대 길이는 10자리입니다.');
+      return;
+    }
+
+    const nickname = input.nickname || input.companyName;
+    editCard({ cardNumber: input.cardNumber, card: { ...input, nickname } });
+    resetInput();
+    onNext();
+  };
 
   return (
     <RootLayout>
@@ -50,13 +67,15 @@ export const CompleteAddPage = ({ onNext }: Props) => {
           </CardBox.Bottom>
         </CardBox>
         <div className="input-container flex-center w-100">
-          <input
-            className="input-underline w-75"
-            type="text"
-            placeholder="카드의 별칭을 입력해주세요."
+          <Input
+            value={input.nickname}
+            type={'text'}
+            className={'input-underline w-75'}
+            placeholder={'카드 별칭 (선택)'}
+            onChange={onChangeNickname}
           />
         </div>
-        <Button type={'button'} onClick={onNext} className={'button-box mt-50'}>
+        <Button type={'button'} onClick={submitCardNickname} className={'button-box mt-50'}>
           <Text className={'button-text'}>{'확인'}</Text>
         </Button>
       </AppLayout>

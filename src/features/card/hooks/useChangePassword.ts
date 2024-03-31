@@ -29,7 +29,7 @@ export const useChangePassword = ({ input, onChange }: Props) => {
         }) ||
         checkIsDeleteInputType(nativeEvent as InputEvent)
       ) {
-        onChange('password', { ...input.password, [section]: value });
+        onChange<'password'>('password', { ...input.password, [section]: value });
       }
     },
     [input.password, onChange],

@@ -28,7 +28,7 @@ export const useChangeSecurityCode = ({ onChange }: Props) => {
         }) ||
         checkIsDeleteInputType(nativeEvent as InputEvent)
       ) {
-        onChange('securityCode', value);
+        onChange<'securityCode'>('securityCode', value);
       }
     },
     [onChange],

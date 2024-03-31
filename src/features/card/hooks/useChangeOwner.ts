@@ -18,7 +18,7 @@ export const useChangeOwner = ({ onChange }: Props) => {
         return;
       }
 
-      onChange('ownerName', value);
+      onChange<'ownerName'>('ownerName', value);
     },
     [onChange],
   );

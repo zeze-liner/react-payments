@@ -22,4 +22,5 @@ export interface CardInputInterface {
   ownerName: string;
   securityCode: string;
   password: CardPassword;
+  nickname: string;
 }
