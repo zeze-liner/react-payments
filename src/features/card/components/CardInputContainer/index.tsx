@@ -4,13 +4,14 @@ import { Button } from '@/components/atoms/Button';
 import { Text } from '@/components/atoms/Text';
 import { useChangeCardInput } from '@/features/card/hooks/useChangeCardInput';
 import { useIsValidCardForm } from '@/features/card/hooks/useIsValidCardForm';
+import { useCard } from '../../providers/CardProvider';
 
 interface Props {
   onNext: () => void;
 }
 export const CardInputContainer = ({ onNext }: Props) => {
+  const { input, addCard } = useCard();
   const {
-    input,
     onChangeNumber,
     onChangeExpirationDate,
     onChangeOwner,
@@ -24,6 +25,7 @@ export const CardInputContainer = ({ onNext }: Props) => {
       alert('카드 정보를 정확히 입력해주세요.');
       return;
     }
+    addCard(input);
     onNext();
   };
 
