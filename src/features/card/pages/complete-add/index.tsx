@@ -8,14 +8,9 @@ import { CardBox } from '@/features/card/components/CardBox';
 import { CardChip } from '@/features/card/components/CardChip';
 import { CardNumber } from '@/features/card/components/CardNumber';
 import { CardInfo } from '@/features/card/components/CardInfo';
-import { useMemo } from 'react';
-import {
-  formattedDisplayCardNumber,
-  formattedExpirationDate,
-  formattedOwnerName,
-} from '@/features/card/utils/formattedString';
 import { Input } from '@/components/atoms/Input';
 import { useChangeCardNickname } from '../../hooks/useChangeCardNickname';
+import { useCardDisplayValue } from '../../hooks/useCardDisplayValue';
 
 interface Props {
   onNext: () => void;
@@ -23,11 +18,9 @@ interface Props {
 
 export const CompleteAddPage = ({ onNext }: Props) => {
   const { input, editCard, resetInput } = useCard();
-  const { cardNumber, ownerName, expirationDate } = input;
-
-  const displayCardNumber = useMemo(() => formattedDisplayCardNumber(cardNumber), [cardNumber]);
-  const displayOwnerName = formattedOwnerName(ownerName);
-  const displayExpirationDate = formattedExpirationDate(expirationDate);
+  const { displayCardNumber, displayOwnerName, displayExpirationDate } = useCardDisplayValue({
+    card: input,
+  });
 
   const { onChangeNickname } = useChangeCardNickname();
 

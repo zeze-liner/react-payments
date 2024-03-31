@@ -16,7 +16,7 @@ export const CardManagementPage = () => {
     <CardProvider>
       <Stepper>
         <Step name={CARD_REGISTRATION_STEPS[0]}>
-          <CardInventoryPage onNext={() => onChangeStep(1)} />
+          <CardInventoryPage onChangeStep={onChangeStep} />
         </Step>
         <Step name={CARD_REGISTRATION_STEPS[1]}>
           <AddCardPage onPrev={() => onChangeStep(0)} onNext={() => onChangeStep(2)} />

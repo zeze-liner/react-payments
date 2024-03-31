@@ -1,27 +1,20 @@
-import { useMemo } from 'react';
 import { CARD_BOX_TYPE, CARD_CHIP_SIZE } from '@/features/card/constants/cardShape';
 import { CardInputInterface } from '@/features/card/types/cardTypes';
 import { CardNumber } from '@/features/card/components/CardNumber';
 import { CardInfo } from '@/features/card/components/CardInfo';
 import { CardChip } from '@/features/card/components/CardChip';
 import { CardBox } from '@/features/card/components/CardBox';
-import {
-  formattedDisplayCardNumber,
-  formattedExpirationDate,
-  formattedOwnerName,
-} from '@/features/card/utils/formattedString';
+import { useCardDisplayValue } from '@/features/card/hooks/useCardDisplayValue';
 
 interface Props {
-  companyName: CardInputInterface['companyName'];
-  ownerName: CardInputInterface['ownerName'];
-  cardNumber: CardInputInterface['cardNumber'];
-  expirationDate: CardInputInterface['expirationDate'];
+  card: CardInputInterface;
 }
 
-export const CardInputDisplay = ({ companyName, ownerName, cardNumber, expirationDate }: Props) => {
-  const displayCardNumber = useMemo(() => formattedDisplayCardNumber(cardNumber), [cardNumber]);
-  const displayOwnerName = formattedOwnerName(ownerName);
-  const displayExpirationDate = formattedExpirationDate(expirationDate);
+export const CardInputDisplay = ({ card }: Props) => {
+  const { companyName } = card;
+  const { displayCardNumber, displayOwnerName, displayExpirationDate } = useCardDisplayValue({
+    card,
+  });
 
   return (
     <CardBox type={CARD_BOX_TYPE.empty}>

@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import { VFlex } from '@/components/atoms/VFlex';
 import { Text } from '@/components/atoms/Text';
 import { CardInputInterface } from '@/features/card/types/cardTypes';
@@ -7,26 +6,28 @@ import { CardBox } from '@/features/card/components/CardBox';
 import { CardChip } from '@/features/card/components/CardChip';
 import { CardNumber } from '@/features/card/components/CardNumber';
 import { CardInfo } from '@/features/card/components/CardInfo';
-import {
-  formattedDisplayCardNumber,
-  formattedExpirationDate,
-  formattedOwnerName,
-} from '@/features/card/utils/formattedString';
+import { useCard } from '@/features/card/providers/CardProvider';
+import { useCardDisplayValue } from '../../hooks/useCardDisplayValue';
 
 interface Props {
   card: CardInputInterface;
+  moveToEditPage: () => void;
 }
 
-export const CardInventoryItem = ({ card }: Props) => {
-  const displayCardNumber = useMemo(
-    () => formattedDisplayCardNumber(card.cardNumber),
-    [card.cardNumber],
-  );
-  const displayOwnerName = formattedOwnerName(card.ownerName);
-  const displayExpirationDate = formattedExpirationDate(card.expirationDate);
+export const CardInventoryItem = ({ card, moveToEditPage }: Props) => {
+  const { setCurrentInput } = useCard();
+
+  const { displayCardNumber, displayOwnerName, displayExpirationDate } = useCardDisplayValue({
+    card,
+  });
+
+  const onClick = () => {
+    setCurrentInput(card);
+    moveToEditPage();
+  };
 
   return (
-    <VFlex className="gap-2 flex-column-center">
+    <VFlex className="gap-2 flex-column-center cursor-pointer" onClick={onClick}>
       <CardBox type={CARD_BOX_TYPE.small}>
         <CardBox.Top>{card.companyName}</CardBox.Top>
         <CardBox.Middle>

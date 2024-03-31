@@ -8,10 +8,10 @@ import { VFlex } from '@/components/atoms/VFlex';
 import { CardInventoryItem } from '@/features/card/components/CardInventoryItem';
 
 interface Props {
-  onNext: () => void;
+  onChangeStep: (step: 0 | 1 | 2) => void;
 }
 
-export const CardInventoryPage = ({ onNext }: Props) => {
+export const CardInventoryPage = ({ onChangeStep }: Props) => {
   const { cards } = useCard();
 
   return (
@@ -26,10 +26,18 @@ export const CardInventoryPage = ({ onNext }: Props) => {
         />
         <VFlex className="gap-6">
           {cards.map((card) => (
-            <CardInventoryItem key={Object.values(card).join()} card={card} />
+            <CardInventoryItem
+              key={Object.values(card).join()}
+              card={card}
+              moveToEditPage={() => onChangeStep(2)}
+            />
           ))}
           <div className="card-box">
-            <Button className="card-inner empty-card" type={'button'} onClick={onNext}>
+            <Button
+              className="card-inner empty-card"
+              type={'button'}
+              onClick={() => onChangeStep(1)}
+            >
               +
             </Button>
           </div>

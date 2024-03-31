@@ -31,12 +31,7 @@ export const CardInputContainer = ({ onNext }: Props) => {
 
   return (
     <VFlex className={'gap-4'}>
-      <CardInput.Display
-        companyName={input.companyName}
-        ownerName={input.ownerName}
-        cardNumber={input.cardNumber}
-        expirationDate={input.expirationDate}
-      />
+      <CardInput.Display card={input} />
       <CardInput.Number cardNumber={input.cardNumber} onChange={onChangeNumber} />
       <CardInput.ExpirationDate
         expirationDate={input.expirationDate}

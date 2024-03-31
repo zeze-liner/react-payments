@@ -19,6 +19,8 @@ interface CardContextInterface {
     card: CardInputInterface;
   }) => void;
   resetInput: () => void;
+  setCurrentInput: (card: CardInputInterface) => void;
+  deleteCard: (cardNumber: CardInputInterface['cardNumber']) => void;
 }
 
 const CardContext = createContext<CardContextInterface | null>(null);
@@ -30,6 +32,7 @@ interface Props {
 const CardProvider = ({ children }: Props) => {
   const [input, setInput] = useState(CARD_INPUT);
   const [cards, setCards] = useState<CardInputInterface[]>([]);
+
   const onChange = useCallback(
     <T extends keyof CardInputInterface>(
       prop: keyof CardInputInterface,
@@ -63,6 +66,14 @@ const CardProvider = ({ children }: Props) => {
     setInput(CARD_INPUT);
   }, []);
 
+  const setCurrentInput = useCallback((card: CardInputInterface) => {
+    setInput(card);
+  }, []);
+
+  const deleteCard = useCallback((cardNumber: CardInputInterface['cardNumber']) => {
+    setCards((prev) => prev.filter((c) => !compareCardNumber(c.cardNumber, cardNumber)));
+  }, []);
+
   const value = useMemo(
     () => ({
       input,
@@ -71,8 +82,10 @@ const CardProvider = ({ children }: Props) => {
       addCard,
       editCard,
       resetInput,
+      setCurrentInput,
+      deleteCard,
     }),
-    [input, cards, onChange, addCard, editCard, resetInput],
+    [input, cards, onChange, addCard, editCard, resetInput, setCurrentInput, deleteCard],
   );
 
   return <CardContext.Provider value={value}>{children}</CardContext.Provider>;
