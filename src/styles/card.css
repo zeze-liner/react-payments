@@ -7,16 +7,15 @@
 }
 
 .card-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   box-sizing: border-box;
   padding: 0 16px;
 }
 
 .empty-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
   width: 208px;
   height: 130px;
 
@@ -32,11 +31,6 @@
 }
 
 .small-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
   width: 208px;
   height: 130px;
 
@@ -56,11 +50,6 @@
 }
 
 .big-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
   width: 290px;
   height: 180px;
 
