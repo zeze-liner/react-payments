@@ -1,5 +1,6 @@
-import { TSteps } from '@/features/card/constants/step';
 import { ReactElement, ReactNode, useState } from 'react';
+
+import { TSteps } from '@/features/card/constants/step';
 
 interface StepProps<T> {
   name: T;

@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+
 import { Text } from '@/components/atoms/Text';
 
 interface Props {

@@ -1,10 +1,11 @@
 import { useMemo } from 'react';
+
 import { CardInputInterface } from '@/features/card/types/cardTypes';
 import {
   formattedDisplayCardNumber,
   formattedExpirationDate,
   formattedOwnerName,
-} from '../utils/formattedString';
+} from '@/features/card/utils/formattedString';
 
 interface Props {
   card: CardInputInterface;

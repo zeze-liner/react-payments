@@ -1,9 +1,10 @@
 import { ChangeEvent, useCallback } from 'react';
-import { CardInputInterface } from '@/features/card/types/cardTypes';
-import { NUMBER_PARSABLE_STRING_PATTERN } from '@/features/card/constants/regExp';
+
 import { MAX_LENGTH_PIECE_CARD_NUMBER } from '@/features/card/constants/maxLength';
-import { checkIsValidPatternAndLength } from '@/features/card/utils/validator';
+import { NUMBER_PARSABLE_STRING_PATTERN } from '@/features/card/constants/regExp';
+import { CardInputInterface } from '@/features/card/types/cardTypes';
 import { checkIsDeleteInputType } from '@/features/card/utils/eventTypeChecker';
+import { checkIsValidPatternAndLength } from '@/features/card/utils/validator';
 
 interface Props {
   input: CardInputInterface;

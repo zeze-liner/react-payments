@@ -1,13 +1,14 @@
 import { ChangeEvent, useCallback } from 'react';
-import { CardInputInterface } from '@/features/card/types/cardTypes';
+
 import { MAX_LENGTH_PIECE_EXPIRATION_DATE } from '@/features/card/constants/maxLength';
 import {
   EXPIRATION_DATE_MM_PATTERN,
   NUMBER_PARSABLE_STRING_PATTERN,
 } from '@/features/card/constants/regExp';
-import { checkIsValidPatternAndLength } from '@/features/card/utils/validator';
+import { CardInputInterface } from '@/features/card/types/cardTypes';
 import { checkIsDeleteInputType } from '@/features/card/utils/eventTypeChecker';
 import { formattedExpirationDateMM } from '@/features/card/utils/formattedString';
+import { checkIsValidPatternAndLength } from '@/features/card/utils/validator';
 
 interface Props {
   input: CardInputInterface;

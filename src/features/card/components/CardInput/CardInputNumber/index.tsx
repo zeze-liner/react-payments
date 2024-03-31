@@ -1,11 +1,12 @@
 import { ChangeEvent } from 'react';
-import { CardInputInterface } from '@/features/card/types/cardTypes';
-import { MAX_LENGTH_PIECE_CARD_NUMBER } from '@/features/card/constants/maxLength';
-import { DISPLAY_CARD_NUMBER_COUPLER } from '@/features/card/constants/display';
+
 import { HFlex } from '@/components/atoms/HFlex';
 import { Input } from '@/components/atoms/Input';
 import { Label } from '@/components/atoms/Label';
 import { VFlex } from '@/components/atoms/VFlex';
+import { DISPLAY_CARD_NUMBER_COUPLER } from '@/features/card/constants/display';
+import { MAX_LENGTH_PIECE_CARD_NUMBER } from '@/features/card/constants/maxLength';
+import { CardInputInterface } from '@/features/card/types/cardTypes';
 
 interface Props {
   cardNumber: CardInputInterface['cardNumber'];

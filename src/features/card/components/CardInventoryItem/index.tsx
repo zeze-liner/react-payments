@@ -1,15 +1,17 @@
 import { MouseEventHandler, useState } from 'react';
-import { VFlex } from '@/components/atoms/VFlex';
+
+import { Button } from '@/components/atoms/Button';
 import { Text } from '@/components/atoms/Text';
-import { CardInputInterface } from '@/features/card/types/cardTypes';
-import { CARD_BOX_TYPE, CARD_CHIP_SIZE } from '@/features/card/constants/cardShape';
+import { VFlex } from '@/components/atoms/VFlex';
 import { CardBox } from '@/features/card/components/CardBox';
 import { CardChip } from '@/features/card/components/CardChip';
-import { CardNumber } from '@/features/card/components/CardNumber';
 import { CardInfo } from '@/features/card/components/CardInfo';
+import { CardNumber } from '@/features/card/components/CardNumber';
+import { CARD_BOX_TYPE, CARD_CHIP_SIZE } from '@/features/card/constants/cardShape';
 import { useCard } from '@/features/card/providers/CardProvider';
+import { CardInputInterface } from '@/features/card/types/cardTypes';
+
 import { useCardDisplayValue } from '../../hooks/useCardDisplayValue';
-import { Button } from '@/components/atoms/Button';
 
 interface Props {
   card: CardInputInterface;

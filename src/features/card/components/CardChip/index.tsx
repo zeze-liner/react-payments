@@ -1,5 +1,5 @@
-import { CardChipSize } from '@/features/card/types/cardUITypes';
 import { CARD_CHIP_SIZE } from '@/features/card/constants/cardShape';
+import { CardChipSize } from '@/features/card/types/cardUITypes';
 
 interface Props {
   size: CardChipSize;

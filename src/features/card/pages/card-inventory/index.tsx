@@ -1,11 +1,11 @@
-import { RootLayout } from '@/components/layout/RootLayout';
 import { Button } from '@/components/atoms/Button';
-import { useCard } from '@/features/card/providers/CardProvider';
-import { AppLayout } from '@/components/layout/AppLayout';
 import { Heading } from '@/components/atoms/Heading';
-import { Header } from '@/components/molecules/Header';
 import { VFlex } from '@/components/atoms/VFlex';
+import { AppLayout } from '@/components/layout/AppLayout';
+import { RootLayout } from '@/components/layout/RootLayout';
+import { Header } from '@/components/molecules/Header';
 import { CardInventoryItem } from '@/features/card/components/CardInventoryItem';
+import { useCard } from '@/features/card/providers/CardProvider';
 
 interface Props {
   onChangeStep: (step: 0 | 1 | 2) => void;

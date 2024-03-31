@@ -1,16 +1,17 @@
-import { CARD_BOX_TYPE, CARD_CHIP_SIZE } from '@/features/card/constants/cardShape';
-import { useCard } from '@/features/card/providers/CardProvider';
+import { Button } from '@/components/atoms/Button';
+import { Input } from '@/components/atoms/Input';
+import { Text } from '@/components/atoms/Text';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { RootLayout } from '@/components/layout/RootLayout';
-import { Button } from '@/components/atoms/Button';
-import { Text } from '@/components/atoms/Text';
 import { CardBox } from '@/features/card/components/CardBox';
 import { CardChip } from '@/features/card/components/CardChip';
-import { CardNumber } from '@/features/card/components/CardNumber';
 import { CardInfo } from '@/features/card/components/CardInfo';
-import { Input } from '@/components/atoms/Input';
-import { useChangeCardNickname } from '../../hooks/useChangeCardNickname';
+import { CardNumber } from '@/features/card/components/CardNumber';
+import { CARD_BOX_TYPE, CARD_CHIP_SIZE } from '@/features/card/constants/cardShape';
+import { useCard } from '@/features/card/providers/CardProvider';
+
 import { useCardDisplayValue } from '../../hooks/useCardDisplayValue';
+import { useChangeCardNickname } from '../../hooks/useChangeCardNickname';
 
 interface Props {
   onNext: () => void;

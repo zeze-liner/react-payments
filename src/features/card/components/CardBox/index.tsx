@@ -1,9 +1,11 @@
 import { ReactNode } from 'react';
-import { CardTop } from './CardTop';
+
+import { CARD_BOX_TYPE } from '@/features/card/constants/cardShape';
+import { CardBoxType } from '@/features/card/types/cardUITypes';
+
 import { CardBottom } from './CardBottom';
 import { CardMiddle } from './CardMiddle';
-import { CardBoxType } from '@/features/card/types/cardUITypes';
-import { CARD_BOX_TYPE } from '@/features/card/constants/cardShape';
+import { CardTop } from './CardTop';
 
 interface Props {
   type: CardBoxType;

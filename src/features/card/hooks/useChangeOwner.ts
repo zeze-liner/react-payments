@@ -1,6 +1,7 @@
 import { ChangeEvent, useCallback } from 'react';
-import { CardInputInterface } from '@/features/card/types/cardTypes';
+
 import { MAX_LENGTH_CARD_OWNER_NAME } from '@/features/card/constants/maxLength';
+import { CardInputInterface } from '@/features/card/types/cardTypes';
 import { checkIsValidLength } from '@/features/card/utils/validator';
 
 interface Props {

@@ -1,5 +1,6 @@
-import { useCard } from '@/features/card/providers/CardProvider';
 import { ChangeEvent, useCallback } from 'react';
+
+import { useCard } from '@/features/card/providers/CardProvider';
 
 export const useChangeCardNickname = () => {
   const { onChange } = useCard();
