@@ -1,3 +1,5 @@
+import clsx from 'clsx';
+
 import { CARD_CHIP_SIZE } from '@/features/card/constants/cardShape';
 import { CardChipSize } from '@/features/card/types/cardUITypes';
 
@@ -6,10 +8,12 @@ interface Props {
 }
 
 export const CardChip = ({ size }: Props) => {
-  if (size === CARD_CHIP_SIZE.small) {
-    return <div className="small-card__chip" />;
-  }
-
-  // size === CARD_CHIP_SIZE.big;
-  return <div className="big-card__chip" />;
+  return (
+    <div
+      className={clsx({
+        'big-card__chip': size === CARD_CHIP_SIZE.big,
+        'small-card__chip': size === CARD_CHIP_SIZE.small,
+      })}
+    />
+  );
 };
