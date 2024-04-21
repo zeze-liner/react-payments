@@ -7,9 +7,9 @@ import { compareCardNumber } from '../../utils/validator';
 
 interface CardContextInterface {
   input: CardInputInterface;
-  onChange: <T extends keyof CardInputInterface>(
+  onChange: (
     prop: keyof CardInputInterface,
-    nextVal: CardInputInterface[T],
+    nextVal: CardInputInterface[keyof CardInputInterface],
   ) => void;
   cards: CardInputInterface[];
   addCard: (card: CardInputInterface) => void;

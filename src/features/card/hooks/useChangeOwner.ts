@@ -5,9 +5,9 @@ import { CardInputInterface } from '@/features/card/types/cardTypes';
 import { checkIsValidLength } from '@/features/card/utils/validator';
 
 interface Props {
-  onChange: <T extends keyof CardInputInterface>(
+  onChange: (
     prop: keyof CardInputInterface,
-    nextVal: CardInputInterface[T],
+    nextVal: CardInputInterface[keyof CardInputInterface],
   ) => void;
 }
 
@@ -19,7 +19,7 @@ export const useChangeOwner = ({ onChange }: Props) => {
         return;
       }
 
-      onChange<'ownerName'>('ownerName', value);
+      onChange('ownerName', value);
     },
     [onChange],
   );

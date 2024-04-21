@@ -12,9 +12,9 @@ import { checkIsValidPatternAndLength } from '@/features/card/utils/validator';
 
 interface Props {
   input: CardInputInterface;
-  onChange: <T extends keyof CardInputInterface>(
+  onChange: (
     prop: keyof CardInputInterface,
-    nextVal: CardInputInterface[T],
+    nextVal: CardInputInterface[keyof CardInputInterface],
   ) => void;
 }
 
@@ -34,7 +34,7 @@ export const useChangeExpirationDate = ({ input, onChange }: Props) => {
         }) || checkIsDeleteInputType(nativeEvent as InputEvent);
 
       if (isValidChange) {
-        onChange<'expirationDate'>('expirationDate', {
+        onChange('expirationDate', {
           ...input.expirationDate,
           [section]: section === 'MM' ? formattedExpirationDateMM(value) : value,
         });

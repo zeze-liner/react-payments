@@ -11,7 +11,7 @@ export const useChangeCardNickname = () => {
         target: { value },
       } = e;
 
-      onChange<'nickname'>('nickname', value);
+      onChange('nickname', value);
     },
     [onChange],
   );

@@ -7,9 +7,9 @@ import { checkIsDeleteInputType } from '@/features/card/utils/eventTypeChecker';
 import { checkIsValidPatternAndLength } from '@/features/card/utils/validator';
 
 interface Props {
-  onChange: <T extends keyof CardInputInterface>(
+  onChange: (
     prop: keyof CardInputInterface,
-    nextVal: CardInputInterface[T],
+    nextVal: CardInputInterface[keyof CardInputInterface],
   ) => void;
 }
 
@@ -29,7 +29,7 @@ export const useChangeSecurityCode = ({ onChange }: Props) => {
         }) || checkIsDeleteInputType(nativeEvent as InputEvent);
 
       if (isValidChange) {
-        onChange<'securityCode'>('securityCode', value);
+        onChange('securityCode', value);
       }
     },
     [onChange],
