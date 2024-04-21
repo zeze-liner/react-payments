@@ -3,7 +3,7 @@ import { createContext, ReactNode, useCallback, useContext, useMemo, useState } 
 import { CARD_INPUT } from '@/features/card/constants/cardInputValue';
 import { CardInputInterface } from '@/features/card/types/cardTypes';
 
-import { compareCardNumber } from '../../utils/cardFinder';
+import { compareCardNumber } from '../../utils/validator';
 
 interface CardContextInterface {
   input: CardInputInterface;

@@ -49,3 +49,12 @@ export const checkIsValidSecurityCode = (securityCode: CardInputInterface['secur
 export const checkIsValidPassword = (password: CardInputInterface['password']) => {
   return password.first.length === 1 && password.second.length === 1;
 };
+
+export const compareCardNumber = (
+  cardNumberA: CardInputInterface['cardNumber'],
+  cardNumberB: CardInputInterface['cardNumber'],
+) => {
+  return (Object.keys(cardNumberA) as (keyof CardInputInterface['cardNumber'])[]).every(
+    (key) => cardNumberA[key] === cardNumberB[key],
+  );
+};
