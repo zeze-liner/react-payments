@@ -21,14 +21,14 @@ export const useChangeSecurityCode = ({ onChange }: Props) => {
         nativeEvent,
       } = e;
 
-      if (
+      const isValidChange =
         checkIsValidPatternAndLength({
           value,
           regExp: NUMBER_PARSABLE_STRING_PATTERN,
           length: MAX_LENGTH_SECURITY_CODE,
-        }) ||
-        checkIsDeleteInputType(nativeEvent as InputEvent)
-      ) {
+        }) || checkIsDeleteInputType(nativeEvent as InputEvent);
+
+      if (isValidChange) {
         onChange<'securityCode'>('securityCode', value);
       }
     },

@@ -22,14 +22,14 @@ export const useChangePassword = ({ input, onChange }: Props) => {
         nativeEvent,
       } = e;
 
-      if (
+      const isValidChange =
         checkIsValidPatternAndLength({
           value,
           regExp: NUMBER_PARSABLE_STRING_PATTERN,
           length: MAX_LENGTH_PIECE_PASSWORD,
-        }) ||
-        checkIsDeleteInputType(nativeEvent as InputEvent)
-      ) {
+        }) || checkIsDeleteInputType(nativeEvent as InputEvent);
+
+      if (isValidChange) {
         onChange<'password'>('password', { ...input.password, [section]: value });
       }
     },

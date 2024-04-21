@@ -26,14 +26,14 @@ export const useChangeExpirationDate = ({ input, onChange }: Props) => {
         nativeEvent,
       } = e;
 
-      if (
+      const isValidChange =
         checkIsValidPatternAndLength({
           value,
           regExp: section === 'MM' ? EXPIRATION_DATE_MM_PATTERN : NUMBER_PARSABLE_STRING_PATTERN,
           length: MAX_LENGTH_PIECE_EXPIRATION_DATE,
-        }) ||
-        checkIsDeleteInputType(nativeEvent as InputEvent)
-      ) {
+        }) || checkIsDeleteInputType(nativeEvent as InputEvent);
+
+      if (isValidChange) {
         onChange<'expirationDate'>('expirationDate', {
           ...input.expirationDate,
           [section]: section === 'MM' ? formattedExpirationDateMM(value) : value,

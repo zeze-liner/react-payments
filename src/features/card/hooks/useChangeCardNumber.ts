@@ -22,14 +22,14 @@ export const useChangeCardNumber = ({ input, onChange }: Props) => {
         nativeEvent,
       } = e;
 
-      if (
+      const isValidChange =
         checkIsValidPatternAndLength({
           value,
           regExp: NUMBER_PARSABLE_STRING_PATTERN,
           length: MAX_LENGTH_PIECE_CARD_NUMBER,
-        }) ||
-        checkIsDeleteInputType(nativeEvent as InputEvent)
-      ) {
+        }) || checkIsDeleteInputType(nativeEvent as InputEvent);
+
+      if (isValidChange) {
         onChange<'cardNumber'>('cardNumber', { ...input.cardNumber, [section]: value });
       }
     },
