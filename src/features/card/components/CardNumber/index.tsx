@@ -4,13 +4,13 @@ import { Text } from '@/components/atoms/Text';
 
 interface Props {
   cardNumber: string;
-  textClassName?: 'card-text__big';
+  isBig?: boolean;
 }
 
-export const CardNumber = ({ cardNumber, textClassName }: Props) => {
+export const CardNumber = ({ cardNumber, isBig }: Props) => {
   return (
     <div className="card-bottom__number">
-      <Text className={clsx('card-text', textClassName)}>{cardNumber}</Text>
+      <Text className={clsx('card-text', { 'card-text__big': !!isBig })}>{cardNumber}</Text>
     </div>
   );
 };

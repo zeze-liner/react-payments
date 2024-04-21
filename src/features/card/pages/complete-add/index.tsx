@@ -52,7 +52,7 @@ export const CompleteAddPage = ({ onNext }: Props) => {
             <CardChip size={CARD_CHIP_SIZE.big} />
           </CardBox.Middle>
           <CardBox.Bottom>
-            <CardNumber cardNumber={displayCardNumber} textClassName={'card-text__big'} />
+            <CardNumber cardNumber={displayCardNumber} isBig />
             <CardInfo
               ownerName={displayOwnerName}
               expirationDateMMYY={displayExpirationDate}
