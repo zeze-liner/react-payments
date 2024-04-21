@@ -18,20 +18,24 @@ interface Props {
 
 const INPUT_ID = 'card-number';
 
+const checkHasCoupler = (
+  cardNumber: CardInputInterface['cardNumber'],
+  order: Exclude<keyof CardInputInterface['cardNumber'], 'fourth'>,
+) => {
+  const hasTargetOrderValue = cardNumber[order].length >= MAX_LENGTH_PIECE_CARD_NUMBER;
+  if (order === 'first') {
+    return hasTargetOrderValue || cardNumber.second || cardNumber.third || cardNumber.fourth;
+  }
+  if (order === 'second') {
+    return hasTargetOrderValue || cardNumber.third || cardNumber.fourth;
+  }
+  return hasTargetOrderValue || cardNumber.fourth;
+};
+
 export const CardInputNumber = ({ cardNumber, onChange }: Props) => {
-  const hasFirstCoupler =
-    cardNumber.first.length >= MAX_LENGTH_PIECE_CARD_NUMBER ||
-    cardNumber.second ||
-    cardNumber.third ||
-    cardNumber.fourth;
-
-  const hasSecondCoupler =
-    cardNumber.second.length >= MAX_LENGTH_PIECE_CARD_NUMBER ||
-    cardNumber.third ||
-    cardNumber.fourth;
-
-  const hasThirdCoupler =
-    cardNumber.third.length >= MAX_LENGTH_PIECE_CARD_NUMBER || cardNumber.fourth;
+  const hasFirstCoupler = checkHasCoupler(cardNumber, 'first');
+  const hasSecondCoupler = checkHasCoupler(cardNumber, 'second');
+  const hasThirdCoupler = checkHasCoupler(cardNumber, 'third');
 
   return (
     <VFlex>
